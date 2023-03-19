@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ScannerComponent } from './scanner.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./scanner/scanner.module').then(m => m.ScannerModule)
+    component: ScannerComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class ScannerRoutingModule { }

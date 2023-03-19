@@ -1,0 +1,18 @@
+<button (click)="start()">Click Here To Scan the bar code</button>
+<barcode-scanner-livestream class="barcode-scanner-container" [config]="config"
+    willReadFrequently="true"
+      (valueChanges)="onValueChanges($event)"
+      (started)="(onStarted)"
+    ></barcode-scanner-livestream>
+    <div [hidden]="!barcodeValue">
+      {{ finalString }}
+    </div>
+
+<div [hidden]="!barcodeValue">
+    <qrcode #qr [allowEmptyString]="true" [qrdata]="finalString" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    <button (click)="downloadQR(qr, 'image/jpg')">Download AS JPG</button>
+    <br>
+    <button (click)="downloadQR(qr, 'image/gif')">Download AS GIF</button>
+    <br>
+    <button (click)="downloadQR(qr, 'image/png')">Download AS PNG</button>
+</div>
